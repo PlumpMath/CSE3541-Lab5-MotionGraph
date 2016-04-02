@@ -4,6 +4,7 @@ using System.Collections;
 public class Running : MonoBehaviour {
 
     Animator runAnimator;
+    bool waving = false;
 
     // Use this for initialization
     void Start () {
@@ -16,9 +17,31 @@ public class Running : MonoBehaviour {
 
         float speed = Input.GetAxis("Vertical");
         float direction = Input.GetAxis("Horizontal");
-        Debug.Log(direction);
+
+
+        if(speed > 0.0f)
+        {
+            waving = false;
+            runAnimator.SetBool("waving", waving);
+        }
+
 
         runAnimator.SetFloat("speed", speed);
         runAnimator.SetFloat("Direction", direction, 0.25f, Time.deltaTime);
+
+        if (Input.GetKeyDown("space"))
+        {
+            runAnimator.SetTrigger("jump");
+        }
+
+        if(Input.GetKeyDown("3"))
+        {
+            waving = !waving;
+
+            runAnimator.SetBool("waving", waving);
+        }
+
+
+
     }
 }
