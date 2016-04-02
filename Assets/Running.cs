@@ -14,10 +14,11 @@ public class Running : MonoBehaviour {
     void Update () {
         runAnimator = GetComponent<Animator>();
 
-        float vert = Input.GetAxis("Vertical");
+        float speed = Input.GetAxis("Vertical");
+        float direction = Input.GetAxis("Horizontal");
+        Debug.Log(direction);
 
-        runAnimator.SetFloat("speed", vert);
-
-        Debug.Log(vert);
+        runAnimator.SetFloat("speed", speed);
+        runAnimator.SetFloat("Direction", direction, 0.25f, Time.deltaTime);
     }
 }
