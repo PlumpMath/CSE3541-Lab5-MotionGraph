@@ -19,7 +19,7 @@ public class Running : MonoBehaviour {
         float direction = Input.GetAxis("Horizontal");
 
 
-        if(speed > 0.0f)
+        if (speed > 0.0f)
         {
             waving = false;
             runAnimator.SetBool("waving", waving);
@@ -34,12 +34,24 @@ public class Running : MonoBehaviour {
             runAnimator.SetTrigger("jump");
         }
 
-        if(Input.GetKeyDown("3"))
+
+        if (Input.GetKeyDown("1"))
+        {
+            runAnimator.SetTrigger("die");
+        }
+
+        if (Input.GetKeyDown("2"))
+        {
+            runAnimator.SetTrigger("revive");
+        }
+
+        if (Input.GetKeyDown("3"))
         {
             waving = !waving;
 
             runAnimator.SetBool("waving", waving);
         }
+
 
 
 
